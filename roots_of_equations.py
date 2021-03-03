@@ -32,7 +32,9 @@ def newton_raphson(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 		x = xnew
 	return iteration, np.around(xnew, decimals-1) 
 
-def fn(x): return 2*x**2 - 5*x + 3
+def fn(x): 
+	# analytical roots are 1 and 1.5
+	return 2*x**2 - 5*x + 3
 
 def bisection_method(fn, x1, x2, max_iter=100, decimals=6):
 	"""
@@ -110,9 +112,14 @@ def secant_method(fn, x1, x2, max_iter=100, decimals=6):
 	return iteration, np.around(xnew, decimals-1)
 
 
-
-
-
+# some root-finding functions in scipy package 
+#from scipy.optimize import newton, bisect, fsolve, root
+#newton(fn, 0)
+#bisect(fn, 0, 1.2)
+#fsolve(fn, 0)
+#fsolve(fn, [-1, 0, 1, 2, 3])
+#root(fn, 0)
+#root(fn, [-1, 0, 1, 2, 3])
 
 
 
