@@ -22,7 +22,7 @@ def linear_interpolation(xp, xlist, ylist):
 def lagrange_method(xp, xlist, ylist):
 	"""
 	Note: 
-	Lagrande's method predict the y value by 
+	Lagrange's method predict the y value by 
 	creating a interpolation polynomial of  
 	degree n and it'll need n+1 points.
 
@@ -32,7 +32,26 @@ def lagrange_method(xp, xlist, ylist):
 
 	>>> time = [0, 20, 40, 60, 80, 100]
 	>>> temp = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
-	>>> 
+	>>> np.around(lagrange_method(50, time, temp), 1)
+	66.9
 	"""
 	# Degree of interpolation polynomial
-	pass
+	n = len(xlist) - 1
+	def l(x, i):
+		value = 1
+		for j in range(n+1):
+			if i != j:
+				value *= (x - xlist[j])/(xlist[i] - xlist[j])
+		return value
+	def y(x):
+		value = 0
+		for i in range(n+1):
+			value += ylist[i]*l(x, i)
+		return value
+	return y(xp)
+
+
+
+
+
+
