@@ -44,8 +44,8 @@ def lagrange_method(xp, xlist, ylist):
 	    xlist ([float]) : x values of data points
 	    ylist ([float]) : y values of data points
 
-    Returns:
-        float : predicted y value of the unknown data point
+	Returns:
+	    float : predicted y value of the unknown data point
 
 	>>> time = [0, 20, 40, 60, 80, 100]
 	>>> temp = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
@@ -79,8 +79,8 @@ def newton_method(xp, xlist, ylist):
 	    xlist ([float]) : x values of data points
 	    ylist ([float]) : y values of data points
 
-    Returns:
-        float : predicted y value of the unknown data point
+	Returns:
+	    float : predicted y value of the unknown data point
 
 	>>> xlist = [0.0, 1.5, 2.8, 4.4, 6.1, 8.0]
 	>>> ylist = [0.0, 0.9, 2.5, 6.6, 7.7, 8.0]
@@ -123,8 +123,8 @@ def linear_regression(xlist, ylist):
 	    xlist ([float]) : x values of data points
 	    ylist ([float]) : y values of data points
 
-    Returns:
-        (float, float) : intercept and slope from linear regression
+	Returns:
+	    (float, float) : intercept and slope from linear regression
 
 	>>> xlist = [3, 4, 5, 6, 7, 8]
 	>>> ylist = [0, 7, 17, 26, 35, 45]

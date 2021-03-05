@@ -14,10 +14,10 @@ def simple_iteration(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	    max_iter (int, optional) : the maximum iteration of the for loop
 	    decimals (int, optional) : the desired decimal accuracy 
 
-    Returns:
-        (int, float) : the first number is the iteration used
-                       and the second number is the numerically
-                       sovled root rounded at the given `decimals`
+	Returns:
+	    (int, float) : the first number is the iteration used
+	                   and the second number is the numerically
+	                   sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -43,10 +43,10 @@ def newton_raphson(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	    max_iter (int, optional) : the maximum iteration of the for loop
 	    decimals (int, optional) : the desired decimal accuracy 
 
-    Returns:
-        (int, float) : the first number is the iteration used
-                       and the second number is the numerically
-                       sovled root rounded at the given `decimals`
+	Returns:
+	    (int, float) : the first number is the iteration used
+	                   and the second number is the numerically
+	                   sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -79,10 +79,10 @@ def bisection_method(fn, x1, x2, max_iter=100, decimals=6):
 	    max_iter (int, optional) : the maximum iteration of the for loop
 	    decimals (int, optional) : the desired decimal accuracy 
 
-    Returns:
-        (int, float) : the first number is the number of bisection 
-                       performed and the second number is the numerically
-                       sovled root rounded at the given `decimals`
+	Returns:
+	    (int, float) : the first number is the number of bisection 
+	                   performed and the second number is the numerically
+	                   sovled root rounded at the given `decimals`
 	"""
 
 	threshold = 10**(-decimals)
@@ -118,10 +118,10 @@ def regula_falsi(fn, x1, x2, max_iter=100, decimals=6):
 	    max_iter (int, optional) : the maximum iteration of the for loop
 	    decimals (int, optional) : the desired decimal accuracy 
 
-    Returns:
-        (int, float) : the first number is the number of iteration used 
-                       and the second number is the numerically sovled 
-                       root rounded at the given `decimals`
+	Returns:
+	    (int, float) : the first number is the number of iteration used 
+	                   and the second number is the numerically sovled 
+	                   root rounded at the given `decimals`
 	"""
 	threshold = 10**(-decimals)
 	y1, y2 = fn(x1), fn(x2)
@@ -160,10 +160,10 @@ def secant_method(fn, x1, x2, max_iter=100, decimals=6):
 	    max_iter (int, optional) : the maximum iteration of the for loop
 	    decimals (int, optional) : the desired decimal accuracy 
 
-    Returns:
-        (int, float) : the first number is the number of iteration used 
-                       and the second number is the numerically sovled 
-                       root rounded at the given `decimals`
+	Returns:
+	    (int, float) : the first number is the number of iteration used 
+	                   and the second number is the numerically sovled 
+	                   root rounded at the given `decimals`
 	"""
 	threshold = 10**(-decimals)
 	if abs(fn(x1)) < threshold:
