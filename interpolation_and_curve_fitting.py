@@ -5,7 +5,16 @@ def linear_interpolation(xp, xlist, ylist):
 	"""
 	Predict the y value of the given `xp` by 
 	linear interpolation between the closest 
-	intervel in `xlist`
+	intervel in `xlist` from the discrete known
+	data points of `xlist` and `ylist`
+
+	Args:
+        xp (float) : the x value of the unknown data point we want to predict
+        xlist ([float]) : x values of data points
+        ylist ([float]) : y values of data points
+
+    Returns:
+        float : predicted y value of the unknown data point
 
 	>>> time = [0, 20, 40, 60, 80, 100]
 	>>> temp = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
@@ -22,7 +31,6 @@ def linear_interpolation(xp, xlist, ylist):
 
 def lagrange_method(xp, xlist, ylist):
 	"""
-	Note: 
 	Lagrange's method predict the y value of a given `xp` 
 	by  creating a interpolation polynomial of  degree n 
 	and it'll need n+1 points.
@@ -30,6 +38,14 @@ def lagrange_method(xp, xlist, ylist):
 	Interpolation polynomial: 
 	y(x) = sum(y_i*l_i(x)) for i from 1 to n+1
 	l_i(x) = prod((x-x_j)/(x_i-x_j)) for j from 1 to n+1 and j!=i
+
+	Args:
+        xp (float) : the x value of the unknown data point we want to predict
+        xlist ([float]) : x values of data points
+        ylist ([float]) : y values of data points
+
+    Returns:
+        float : predicted y value of the unknown data point
 
 	>>> time = [0, 20, 40, 60, 80, 100]
 	>>> temp = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
@@ -53,11 +69,18 @@ def lagrange_method(xp, xlist, ylist):
 
 def newton_method(xp, xlist, ylist):
 	"""
-	Note: 
 	Newton's method predict the y value of a given `xp` by 
 	creating a interpolation  polynomial of  degree n in 
 	the form of a0+a1(x-x1)+a2(x-x1)(x-x2)+...
 	and it'll need n+1 points.
+
+	Args:
+        xp (float) : the x value of the unknown data point we want to predict
+        xlist ([float]) : x values of data points
+        ylist ([float]) : y values of data points
+
+    Returns:
+        float : predicted y value of the unknown data point
 
 	>>> xlist = [0.0, 1.5, 2.8, 4.4, 6.1, 8.0]
 	>>> ylist = [0.0, 0.9, 2.5, 6.6, 7.7, 8.0]
@@ -93,6 +116,16 @@ def newton_method(xp, xlist, ylist):
 # Topic: Curve Fitting
 def linear_regression(xlist, ylist):
 	"""
+	Return the intercept `a` and slope `b` by fitting the 
+	given data points of `xlist` and `ylist` using linear regression
+
+	Args:
+        xlist ([float]) : x values of data points
+        ylist ([float]) : y values of data points
+
+    Returns:
+        (float, float) : intercept and slope from linear regression
+
 	>>> xlist = [3, 4, 5, 6, 7, 8]
 	>>> ylist = [0, 7, 17, 26, 35, 45]
 	>>> print('y = (%.3f) + (%.3f)x' % linear_regression(xlist, ylist))
@@ -107,9 +140,18 @@ def linear_regression(xlist, ylist):
 
 def polynomial_fit(xlist, ylist, degree=2):
 	"""
-	Fit the given dataset to a given `degree` polynial and 
-	I use the form [A]{a}={B} here where [A] is a matrix and
-	{coef} and {B} are vectors
+	Fit the given dataset to a given `degree` polynial from the 
+	given data points of `xlist` and `ylist`. I use the form [A]{a}={B} 
+	ere where [A] is a matrix and {coef} and {B} are vectors
+
+	Args:
+        xlist ([float]) : x values of data points
+        ylist ([float]) : y values of data points
+        degree (int, optional) : the highest degree of the fitting polynomial
+
+    Returns:
+        ndarray : the coefficients of the fitting polynomial from x^0 to x^degree
+
 
 	>>> xlist = [0, 1, 2, 3, 4, 5]
 	>>> ylist = [2, 8, 14, 28, 39, 62]
