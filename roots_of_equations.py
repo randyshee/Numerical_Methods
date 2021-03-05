@@ -2,8 +2,22 @@ import numpy as np
 
 def simple_iteration(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	"""
-	Solve quadratic equations in the form of 
-	ax^2 + bx + c = 0 iteratively with for loop
+	Solve quadratic equations in the form of ax^2 + bx + c = 0 
+	iteratively with for loop that has an `initial_guess` and 
+	ends at `max_iter` iterations or a threshold given by `decimals`
+
+	Args:
+        a (float) : coefficient of x^2
+        b (float) : coefficient of x
+        c (float) : constant coefficient
+        initial_guess (float, optional) : initial guess of the root
+        max_iter (int, optional) : the maximum iteration of the for loop
+        decimals (int, optional) : the desired decimal accuracy 
+
+    Returns:
+        (int, float) : the first number is the iteration used
+        			   and the second number is the numerically
+        			   sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -17,8 +31,22 @@ def simple_iteration(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 
 def newton_raphson(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	"""
-	Solve quadratic equations in the form of 
-	ax^2 + bx + c = 0 using the Newton-Raphson's method
+	Solve quadratic equations in the form of ax^2 + bx + c = 0 
+	using the Newton-Raphson's method that has an `initial_guess` and 
+	ends at `max_iter` iterations or a threshold given by `decimals`
+
+	Args:
+        a (float) : coefficient of x^2
+        b (float) : coefficient of x
+        c (float) : constant coefficient
+        initial_guess (float, optional) : initial guess of the root
+        max_iter (int, optional) : the maximum iteration of the for loop
+        decimals (int, optional) : the desired decimal accuracy 
+
+    Returns:
+        (int, float) : the first number is the iteration used
+        			   and the second number is the numerically
+        			   sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -32,15 +60,29 @@ def newton_raphson(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 		x = xnew
 	return iteration, np.around(xnew, decimals-1) 
 
+# An example of what fn should look like
 def fn(x): 
 	# analytical roots are 1 and 1.5
 	return 2*x**2 - 5*x + 3
 
 def bisection_method(fn, x1, x2, max_iter=100, decimals=6):
 	"""
-	Find roots of equations in the form of fn(x) = 0 
-	using the bisection method where `x1` and `x2` are 
-	the left and right limit of the expected interval
+	Find roots of equations in the form of fn(x) = 0 using the 
+	bisection method where `x1` and `x2` are the lower and upper 
+	limit of the expected interval. The process ends at `max_iter` 
+	iterations or a threshold given by `decimals`
+
+	Args:
+        fn : a user defined or lambda function that returns a float
+        x1 (float) : lower limit of the expected interval
+        x2 (float) : upper limit of the expected interval
+        max_iter (int, optional) : the maximum iteration of the for loop
+        decimals (int, optional) : the desired decimal accuracy 
+
+    Returns:
+        (int, float) : the first number is the number of bisection 
+                       performed and the second number is the numerically
+        			   sovled root rounded at the given `decimals`
 	"""
 
 	threshold = 10**(-decimals)
@@ -64,9 +106,22 @@ def bisection_method(fn, x1, x2, max_iter=100, decimals=6):
 
 def regula_falsi(fn, x1, x2, max_iter=100, decimals=6):
 	"""
-	Find roots of equations in the form of fn(x) = 0 
-	using the regula falsi method where `x1` and `x2` are 
-	the left and right limit of the expected interval
+	Find roots of equations in the form of fn(x) = 0 using the 
+	regula falsi method where `x1` and `x2` are the lower and 
+	upper limit of the expected interval. The process ends at 
+	`max_iter` iterations or a threshold given by `decimals`
+
+	Args:
+        fn : a user defined or lambda function that returns a float
+        x1 (float) : lower limit of the expected interval
+        x2 (float) : upper limit of the expected interval
+        max_iter (int, optional) : the maximum iteration of the for loop
+        decimals (int, optional) : the desired decimal accuracy 
+
+    Returns:
+        (int, float) : the first number is the number of iteration used 
+                       and the second number is the numerically sovled 
+                       root rounded at the given `decimals`
 	"""
 	threshold = 10**(-decimals)
 	y1, y2 = fn(x1), fn(x2)
@@ -97,6 +152,18 @@ def secant_method(fn, x1, x2, max_iter=100, decimals=6):
 	necessary to be in this interval. However, they 
 	should not be the same (x1 cannot equal x2), and
 	fn(x1) also shouldn't be the same as fn(x1).
+
+	Args:
+        fn : a user defined or lambda function that returns a float
+        x1 (float) : lower limit of the expected interval
+        x2 (float) : upper limit of the expected interval
+        max_iter (int, optional) : the maximum iteration of the for loop
+        decimals (int, optional) : the desired decimal accuracy 
+
+    Returns:
+        (int, float) : the first number is the number of iteration used 
+                       and the second number is the numerically sovled 
+                       root rounded at the given `decimals`
 	"""
 	threshold = 10**(-decimals)
 	if abs(fn(x1)) < threshold:
