@@ -1,5 +1,6 @@
 import numpy as np
 
+# Topic: Interpolation
 def linear_interpolation(xp, xlist, ylist):
 	"""
 	Predict the y value of the given `xp` by 
@@ -89,6 +90,44 @@ def newton_method(xp, xlist, ylist):
 		return product
 	return sum([Dy[i, i]*x_product(xp, i) for i in range(n+1)])
 
+# Topic: Curve Fitting
+def linear_regression(xlist, ylist):
+	"""
+	>>> xlist = [3, 4, 5, 6, 7, 8]
+	>>> ylist = [0, 7, 17, 26, 35, 45]
+	>>> print('y = (%.3f) + (%.3f)x' % linear_regression(xlist, ylist))
+	y = (-28.305) + (9.086)x
+	"""
+	n = len(xlist)
+	x = np.array(xlist, float)
+	y = np.array(ylist, float)
+	coef_a = (np.mean(y)*np.sum(x**2) - np.mean(x)*np.sum(x*y))/(np.sum(x**2) - n*np.mean(x)**2)
+	coef_b = (np.sum(x*y) - np.mean(x)*np.sum(y))/(sum(x**2) - n*np.mean(x)**2)
+	return coef_a, coef_b
 
+def polynomial_fit(xlist, ylist, degree=2):
+	"""
+	Fit the given dataset to a given `degree` polynial and 
+	I use the form [A]{a}={B} here where [A] is a matrix and
+	{a} and {B} are vectors
 
-
+	>>> xlist = [0, 1, 2, 3, 4, 5]
+	>>> ylist = [2, 8, 14, 28, 39, 62]
+	>>> a = polynomial_fit(xlist, ylist)
+	>>> print('f(x) = (%.3f) + (%.3f)x + (%.3f)x^2' %(a[0], a[1], a[2]))
+	f(x) = (2.679) + (2.254)x + (1.875)x^2
+	"""
+	x = np.array(xlist, float)
+	y = np.array(ylist, float)
+	m = len(x)
+	A = np.zeros((degree+1, degree+1))
+	B = np.zeros((degree+1))
+	for row in range(degree+1):
+		for col in range(degree+1):
+			if row == 0 and col == 0:
+				A[row, col] = m
+				continue
+			A[row, col] = np.sum(x**(row+col))
+		B[row] = sum(x**row*y)
+	a = np.linalg.solve(A, B)
+	return a
