@@ -9,12 +9,12 @@ def linear_interpolation(xp, xlist, ylist):
 	data points of `xlist` and `ylist`
 
 	Args:
-        xp (float) : the x value of the unknown data point we want to predict
-        xlist ([float]) : x values of data points
-        ylist ([float]) : y values of data points
+	    xp (float) : the x value of the unknown data point we want to predict
+	    xlist ([float]) : x values of data points
+	    ylist ([float]) : y values of data points
 
-    Returns:
-        float : predicted y value of the unknown data point
+	Returns:
+	    float : predicted y value of the unknown data point
 
 	>>> time = [0, 20, 40, 60, 80, 100]
 	>>> temp = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
@@ -40,9 +40,9 @@ def lagrange_method(xp, xlist, ylist):
 	l_i(x) = prod((x-x_j)/(x_i-x_j)) for j from 1 to n+1 and j!=i
 
 	Args:
-        xp (float) : the x value of the unknown data point we want to predict
-        xlist ([float]) : x values of data points
-        ylist ([float]) : y values of data points
+	    xp (float) : the x value of the unknown data point we want to predict
+	    xlist ([float]) : x values of data points
+	    ylist ([float]) : y values of data points
 
     Returns:
         float : predicted y value of the unknown data point
@@ -75,9 +75,9 @@ def newton_method(xp, xlist, ylist):
 	and it'll need n+1 points.
 
 	Args:
-        xp (float) : the x value of the unknown data point we want to predict
-        xlist ([float]) : x values of data points
-        ylist ([float]) : y values of data points
+	    xp (float) : the x value of the unknown data point we want to predict
+	    xlist ([float]) : x values of data points
+	    ylist ([float]) : y values of data points
 
     Returns:
         float : predicted y value of the unknown data point
@@ -120,8 +120,8 @@ def linear_regression(xlist, ylist):
 	given data points of `xlist` and `ylist` using linear regression
 
 	Args:
-        xlist ([float]) : x values of data points
-        ylist ([float]) : y values of data points
+	    xlist ([float]) : x values of data points
+	    ylist ([float]) : y values of data points
 
     Returns:
         (float, float) : intercept and slope from linear regression
@@ -145,13 +145,12 @@ def polynomial_fit(xlist, ylist, degree=2):
 	ere where [A] is a matrix and {coef} and {B} are vectors
 
 	Args:
-        xlist ([float]) : x values of data points
-        ylist ([float]) : y values of data points
-        degree (int, optional) : the highest degree of the fitting polynomial
+	    xlist ([float]) : x values of data points
+	    ylist ([float]) : y values of data points
+	    degree (int, optional) : the highest degree of the fitting polynomial
 
-    Returns:
-        ndarray : the coefficients of the fitting polynomial from x^0 to x^degree
-
+	Returns:
+	    ndarray : the coefficients of the fitting polynomial from x^0 to x^degree
 
 	>>> xlist = [0, 1, 2, 3, 4, 5]
 	>>> ylist = [2, 8, 14, 28, 39, 62]

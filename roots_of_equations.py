@@ -7,17 +7,17 @@ def simple_iteration(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	ends at `max_iter` iterations or a threshold given by `decimals`
 
 	Args:
-        a (float) : coefficient of x^2
-        b (float) : coefficient of x
-        c (float) : constant coefficient
-        initial_guess (float, optional) : initial guess of the root
-        max_iter (int, optional) : the maximum iteration of the for loop
-        decimals (int, optional) : the desired decimal accuracy 
+	    a (float) : coefficient of x^2
+	    b (float) : coefficient of x
+	    c (float) : constant coefficient
+	    initial_guess (float, optional) : initial guess of the root
+	    max_iter (int, optional) : the maximum iteration of the for loop
+	    decimals (int, optional) : the desired decimal accuracy 
 
     Returns:
         (int, float) : the first number is the iteration used
-        			   and the second number is the numerically
-        			   sovled root rounded at the given `decimals`
+                       and the second number is the numerically
+                       sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -36,17 +36,17 @@ def newton_raphson(a, b, c, initial_guess=0, max_iter=100, decimals=6):
 	ends at `max_iter` iterations or a threshold given by `decimals`
 
 	Args:
-        a (float) : coefficient of x^2
-        b (float) : coefficient of x
-        c (float) : constant coefficient
-        initial_guess (float, optional) : initial guess of the root
-        max_iter (int, optional) : the maximum iteration of the for loop
-        decimals (int, optional) : the desired decimal accuracy 
+	    a (float) : coefficient of x^2
+	    b (float) : coefficient of x
+	    c (float) : constant coefficient
+	    initial_guess (float, optional) : initial guess of the root
+	    max_iter (int, optional) : the maximum iteration of the for loop
+	    decimals (int, optional) : the desired decimal accuracy 
 
     Returns:
         (int, float) : the first number is the iteration used
-        			   and the second number is the numerically
-        			   sovled root rounded at the given `decimals`
+                       and the second number is the numerically
+                       sovled root rounded at the given `decimals`
 	"""
 	x = initial_guess
 	threshold = 10**(-decimals)
@@ -73,16 +73,16 @@ def bisection_method(fn, x1, x2, max_iter=100, decimals=6):
 	iterations or a threshold given by `decimals`
 
 	Args:
-        fn : a user defined or lambda function that returns a float
-        x1 (float) : lower limit of the expected interval
-        x2 (float) : upper limit of the expected interval
-        max_iter (int, optional) : the maximum iteration of the for loop
-        decimals (int, optional) : the desired decimal accuracy 
+	    fn : a user defined or lambda function that returns a float
+	    x1 (float) : lower limit of the expected interval
+	    x2 (float) : upper limit of the expected interval
+	    max_iter (int, optional) : the maximum iteration of the for loop
+	    decimals (int, optional) : the desired decimal accuracy 
 
     Returns:
         (int, float) : the first number is the number of bisection 
                        performed and the second number is the numerically
-        			   sovled root rounded at the given `decimals`
+                       sovled root rounded at the given `decimals`
 	"""
 
 	threshold = 10**(-decimals)
@@ -112,11 +112,11 @@ def regula_falsi(fn, x1, x2, max_iter=100, decimals=6):
 	`max_iter` iterations or a threshold given by `decimals`
 
 	Args:
-        fn : a user defined or lambda function that returns a float
-        x1 (float) : lower limit of the expected interval
-        x2 (float) : upper limit of the expected interval
-        max_iter (int, optional) : the maximum iteration of the for loop
-        decimals (int, optional) : the desired decimal accuracy 
+	    fn : a user defined or lambda function that returns a float
+	    x1 (float) : lower limit of the expected interval
+	    x2 (float) : upper limit of the expected interval
+	    max_iter (int, optional) : the maximum iteration of the for loop
+	    decimals (int, optional) : the desired decimal accuracy 
 
     Returns:
         (int, float) : the first number is the number of iteration used 
@@ -154,11 +154,11 @@ def secant_method(fn, x1, x2, max_iter=100, decimals=6):
 	fn(x1) also shouldn't be the same as fn(x1).
 
 	Args:
-        fn : a user defined or lambda function that returns a float
-        x1 (float) : lower limit of the expected interval
-        x2 (float) : upper limit of the expected interval
-        max_iter (int, optional) : the maximum iteration of the for loop
-        decimals (int, optional) : the desired decimal accuracy 
+	    fn : a user defined or lambda function that returns a float
+	    x1 (float) : lower limit of the expected interval
+	    x2 (float) : upper limit of the expected interval
+	    max_iter (int, optional) : the maximum iteration of the for loop
+	    decimals (int, optional) : the desired decimal accuracy 
 
     Returns:
         (int, float) : the first number is the number of iteration used 
