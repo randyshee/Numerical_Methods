@@ -109,13 +109,16 @@ def polynomial_fit(xlist, ylist, degree=2):
 	"""
 	Fit the given dataset to a given `degree` polynial and 
 	I use the form [A]{a}={B} here where [A] is a matrix and
-	{a} and {B} are vectors
+	{coef} and {B} are vectors
 
 	>>> xlist = [0, 1, 2, 3, 4, 5]
 	>>> ylist = [2, 8, 14, 28, 39, 62]
-	>>> a = polynomial_fit(xlist, ylist)
-	>>> print('f(x) = (%.3f) + (%.3f)x + (%.3f)x^2' %(a[0], a[1], a[2]))
+	>>> coef = polynomial_fit(xlist, ylist)
+	>>> print('f(x) = (%.3f) + (%.3f)x + (%.3f)x^2' %(coef[0], coef[1], coef[2]))
 	f(x) = (2.679) + (2.254)x + (1.875)x^2
+	>>> coef = polynomial_fit(xlist, ylist, 3)
+	>>> print('f(x) = (%.3f) + (%.3f)x + (%.3f)x^2 + (%.3f)x^3' %(coef[0], coef[1], coef[2], coef[3]))
+	f(x) = (1.929) + (5.679)x + (-0.000)x^2 + (0.250)x^3
 	"""
 	x = np.array(xlist, float)
 	y = np.array(ylist, float)
@@ -129,5 +132,5 @@ def polynomial_fit(xlist, ylist, degree=2):
 				continue
 			A[row, col] = np.sum(x**(row+col))
 		B[row] = sum(x**row*y)
-	a = np.linalg.solve(A, B)
-	return a
+	coef = np.linalg.solve(A, B)
+	return coef
