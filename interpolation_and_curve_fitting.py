@@ -175,3 +175,40 @@ def polynomial_fit(xlist, ylist, degree=2):
 		B[row] = sum(x**row*y)
 	coef = np.linalg.solve(A, B)
 	return coef
+
+# some interpolation functions in scipy package 
+#from scipy.interpolate import interp1d, lagrange
+
+#f = interp1d(x, y) #creates the linear interpolation function
+#f = interp1d(x, y, 'quadratic') #creates the quadratic interpolation function
+#f = interp1d(x, y, 'cubic') #creates the cubit interpolation function
+
+#L = lagrange(x, y) #creates the interpolation polynomial
+
+
+# some curve fitting functions in scipy package 
+#from scipy.optimize import linregress, curve_fit
+
+#L = lingress(x, y)
+#print(L.slope)
+#print(L.intercept)
+
+#def f(x, a0, a1, a2, a3):
+#	return a0 + a1*x + a2*x**2 + a3*x**3
+#a, _ = curve_fit(f, x, y) # a is an array that holds coefficients of f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
