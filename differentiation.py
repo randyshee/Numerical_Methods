@@ -82,5 +82,11 @@ def central_finite_differences(fn, x, n=1, h=0.05):
 	"""
 	return sum([(-1)**i*n_choose_i(n, i)*fn(x+(n/2-i)*h)/h**n for i in range(n+1)])
 
+# some differentiation functions in scipy package 
+#from scipy.misc import derivative
 
-
+#fn = lambda x: 0.1*x**5 - 0.2*x**3 + 0.1*x -0.2
+#computes the n-th derivative of a given function fn at a given
+#point x0 using a central difference formula with spacing dx
+#yn = derivative(fn, x0, dx, n)
+#y2 = derivative(fn, 0.1, 0.01, 2)
