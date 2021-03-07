@@ -92,5 +92,54 @@ def simpson_3_8_rule(fn, range_x, n=6):
 		   3*sum([fn(l + i*h) + fn(l + (i + 1)*h) for i in range(1, n, 3)]) \
 		   + 2*sum([fn(l + i*h) for i in range(3, n, 3)]))
 
-def double_integration():
-	pass
+def double_integration(fn, range_x, range_y, n_x=10, n_y=10):
+	"""
+	This functino uses Simpson's 1/3 rule to calculate the double integral
+	of `fn` with `n_x` divisions within a range of x values `range_x` and 
+	`n_y` divisions within a range of y values `range_y`.
+
+	Args:
+	    fn : a user defined or lambda function that returns a float
+	    range_x ([float, float]) : lower and upper limit of x values
+	    range_y ([float, float]) : lower and upper limit of y values
+	    n_x (int) : the number of divisions for x (has to be even)
+	    n_y (int) : the number of divisions for y (has to be even)
+
+	Returns:
+	    float : the approximated integrated value at given x and y ranges
+
+	>>> fn = lambda x, y: x**2*y + x*y**2
+	>>> range_x = [1, 2]
+	>>> range_y = [-1, 1] # analytical result = 1
+	>>> np.around(double_integration(fn, range_x, range_y), 6)
+	1.0
+	"""
+	# l and r denote left (lower) and right (upper) limits of x or y
+	l_x, r_x, l_y, r_y = range_x[0], range_x[1], range_y[0], range_y[1]
+	h_x = (r_x - l_x)/n_x
+	h_y = (r_y - l_y)/n_y
+	S = 0
+	for i in range(n_y+1):
+		if i == 0 or i == n_y:
+			p = 1
+		elif i%2 == 1:
+			p = 4
+		else:
+			p = 2
+		for j in range(n_x+1):
+			if j == 0 or j == n_x:
+				q = 1
+			elif j%2 == 1:
+				q = 4
+			else:
+				q = 2
+			S += p*q*fn(l_x + j*h_x, l_y + i*h_y)
+	return h_x*h_y*S/9
+
+# some integration functions in scipy package 
+#from scipy.integrate import quad, dblquad, nquad
+
+#fn = lambda x: 0.1*x**5 - 0.2*x**3 + 0.1*x -0.2
+#integral, error = quad(fn, a, b)
+#integral, error = dblquad(fn, ax, bx, lambda y: ay, lambda y: by)
+#integral, error = nquad(fn, [[a1, b1], [a2, b2],..., [an, bn]])
