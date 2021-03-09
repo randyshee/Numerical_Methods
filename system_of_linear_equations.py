@@ -41,10 +41,3 @@ def gaussian_elimination(A, b):
 	for row in range(n-1, -1, -1):
 		x[row] = (b[row] - sum([A[row, col]*x[col] for col in range(row+1, n)]))/A[row, row]
 	return x
-
-
-
-
-
-
-
