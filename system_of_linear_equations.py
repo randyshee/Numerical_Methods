@@ -22,6 +22,14 @@ def gaussian_elimination(A, b):
 	>>> b = np.array([5, 7, 2, 3, 4], float)
 	>>> np.around(gaussian_elimination(A, b), 6)
 	array([0.444444, 0.555556, 0.666667, 0.222222, 0.222222])
+	>>> A = np.array([[0, 7, -1, 3, 1], \
+	                  [2, 3, 4, 1, 7], \
+	                  [6, 2, 0, 2, -1], \
+	                  [2, 1, 2, 0, 2], \
+	                  [3, 4, 1, -2, 1]], float)
+	>>> b = np.array([5, 7, 2, 3, 4], float)
+	>>> np.around(gaussian_elimination(A, b), 6)
+	array([0.021705, 0.792248, 1.051163, 0.15814 , 0.031008])
 	"""
 	# Copy the arrays because we don't want to change the original arrays
 	A = np.copy(A)
@@ -30,7 +38,15 @@ def gaussian_elimination(A, b):
 	x = np.zeros(n, float)
 	# Elimination step 
 	for k in range(n-1):
+		# Swap two rows if the diagonal term is zero
+		if A[k, k] == 0:
+			for col in range(n):
+				A[k, col], A[k+1, col] = A[k+1, col], A[k, col]
+			b[k], b[k+1] = b[k+1], b[k]
 		for row in range(k+1, n):
+			# This will avoid division by 0
+			if A[row, k] == 0:
+				continue
 			factor = A[k, k]/A[row, k]
 			# Constant terms also have to go through the elimination process
 			b[row] = b[k] - factor*b[row] 
@@ -41,3 +57,6 @@ def gaussian_elimination(A, b):
 	for row in range(n-1, -1, -1):
 		x[row] = (b[row] - sum([A[row, col]*x[col] for col in range(row+1, n)]))/A[row, row]
 	return x
+
+def jacobi_method():
+	pass
