@@ -19,9 +19,9 @@ def gaussian_elimination(A, b):
 	                  [6, 2, -3, 2, -1], \
 	                  [2, 1, 2, -1, 2], \
 	                  [3, 4, 1, -2, 1]], float)
-    >>> b = np.array([5, 7, 2, 3, 4], float)
-    >>> np.around(gaussian_elimination(A, b), 6)
-    array([0.444444, 0.555556, 0.666667, 0.222222, 0.222222])
+	>>> b = np.array([5, 7, 2, 3, 4], float)
+	>>> np.around(gaussian_elimination(A, b), 6)
+	array([0.444444, 0.555556, 0.666667, 0.222222, 0.222222])
 	"""
 	# Copy the arrays because we don't want to change the original arrays
 	A = np.copy(A)
