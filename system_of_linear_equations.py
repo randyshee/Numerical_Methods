@@ -68,7 +68,7 @@ def jacobi_method(A, b, initial_guess, max_iter=100, decimals=6):
 	                  variable in each linear equation
 	    b (ndarray) : 1D array containing the constant terms
 	    initial_guess (ndarray) : 1D array containing the guess of solution
-	    max_iter (int, optional) : the maximum iteration
+	    max_iter (int) : the maximum iteration
 	    decimals (int) : The desired decimal accuracy
 
 	Returns:
