@@ -58,5 +58,40 @@ def gaussian_elimination(A, b):
 		x[row] = (b[row] - sum([A[row, col]*x[col] for col in range(row+1, n)]))/A[row, row]
 	return x
 
-def jacobi_method():
-	pass
+def jacobi_method(A, b, initial_guess, max_iter=100, decimals=6):
+	"""
+	Solve a system of linear equations by simple iteration method 
+	after rearrangement given in the form of Ax = b
+
+	Args:
+	    A (ndarray) : 2D array containing the coefficients of each 
+	                  variable in each linear equation
+	    b (ndarray) : 1D array containing the constant terms
+	    initial_guess (ndarray) : 1D array containing the guess of solution
+	    max_iter (int, optional) : the maximum iteration
+	    decimals (int) : The desired decimal accuracy
+
+	Returns:
+	    ndarray : 1D array containing the solution to each variable
+
+	>>> A = np.array([[4, 1, 2, -1], \
+	                  [3, 6, -1, 2], \
+	                  [2, -1, 5, -3], \
+	                  [4, 1, -3, -8]], float)
+	>>> b = np.array([2, -1, 3, 2], float)
+	>>> initial_guess = np.full(len(b), 1., float)
+	>>> jacobi_method(A, b, initial_guess)[1]
+	array([ 0.36501, -0.23379,  0.28507, -0.20362])
+	"""
+	n = len(b)
+	x = initial_guess
+	xnew = np.empty(n, float)
+	threshold = 10**(-decimals)
+	for iteration in range(max_iter):
+		for i in range(n):
+			xnew[i] = -(sum([A[i, j]*x[j] for j in range(n) if j != i]) - b[i])/A[i, i]
+		if all(abs(xnew - x) < threshold):
+			break
+		else:
+			x = np.copy(xnew)
+	return iteration, np.around(xnew, decimals-1)
