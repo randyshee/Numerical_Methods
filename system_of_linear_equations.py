@@ -128,7 +128,6 @@ def gauss_seidel_method(A, b, initial_guess, max_iter=100, decimals=6):
 	n = len(b)
 	x = initial_guess
 	xnew = np.empty(n, float)
-	xdiff = np.empty(n, float)
 	threshold = 10**(-decimals)
 	for iteration in range(max_iter):
 		for i in range(n):
