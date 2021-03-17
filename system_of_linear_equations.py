@@ -139,9 +139,61 @@ def gauss_seidel_method(A, b, initial_guess, max_iter=100, decimals=6):
 			break
 	return iteration, np.around(xnew, decimals-1)
 
-def gauss_jordan_method():
-	pass
+def gauss_jordan_method(A, b):
+	"""
+	Solve a system of linear equations given the form of Ax = b
+	by Gauss-Jordan elemination to get an identity matrix.
+
+	Args:
+	    A (ndarray) : 2D array containing the coefficients of each 
+	                  variable in each linear equation
+	    b (ndarray) : 1D array containing the constant terms
+
+	Returns:
+	    ndarray : 1D array containing the solution to each variable
+
+	>>> A = np.array([[0, 2, 0, 1], \
+	                  [2, 2, 3, 2], \
+	                  [4, -3, 0, 1], \
+	                  [6, 1, -6, -5]], float)
+	>>> b = np.array([0, -2, -7, 6], float)
+	>>> np.around(gauss_jordan_method(A, b), 6)
+	array([-0.5     ,  1.      ,  0.333333, -2.      ])
+	"""
+	# Copy the arrays because we don't want to change the original arrays
+	A = np.copy(A)
+	b = np.copy(b)
+	n = len(b)
+	for k in range(n):
+		# Partial Pivoting
+		if np.fabs(A[k, k]) < 1.e-12:
+			for i in range(k+1, n):
+				if np.fabs(A[i,k]) > np.fabs(A[k, k]):
+					#for j in range(k, n):
+					#	A[k, j], A[i, j] = A[i, j], A[k, j]
+					#b[k], b[i] = b[i], b[k]
+					A[[k, i]] = A[[i, k]]
+					b[[k, i]] = b[[i, k]]
+					break
+		# Division of the pivot row
+		pivot = A[k, k]
+		for j in range(k, n):
+			A[k, j] /= pivot
+		b[k] /= pivot
+		# Elimination
+		for i in range(n):
+			if i ==k or A[i, k] == 0:
+				continue
+			factor = A[i, k]
+			#for j in range(k, n):
+			#	A[i, j] -= factor*A[k, j]
+			#b[i] -= factor*b[k]
+			A[i] -= factor*A[k]
+			b[i] -= factor*b[k]
+	return b
 
 # some linear system solution functions in numpy and scipy packages
-
-
+#from scipy.linalg import solve, inv
+#from numpy import dot
+#x = solve(A, b)
+#x = dot(inv(A), b)
