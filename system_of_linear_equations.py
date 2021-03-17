@@ -62,7 +62,7 @@ def jacobi_method(A, b, initial_guess, max_iter=100, decimals=6):
 	"""
 	Solve a system of linear equations by simple iteration method 
 	after rearrangement known as the Jacobi's method given the 
-	form of Ax = b
+	form of Ax = b with diagonal dominance.
 
 	Args:
 	    A (ndarray) : 2D array containing the coefficients of each 
@@ -100,10 +100,10 @@ def jacobi_method(A, b, initial_guess, max_iter=100, decimals=6):
 def gauss_seidel_method(A, b, initial_guess, max_iter=100, decimals=6):
 	"""
 	Solve a system of linear equations given the form of Ax = b 
-	by simple iteration method similar to Jacobi's method but 
-	new values of `xnew` (solution guess) are applied within
-	the same iteration. This method is known as the Gauss-Seidel's
-	method.
+	with diagonal dominance by simple iteration method similar to 
+	Jacobi's method but new values of `xnew` (solution guess) are 
+	applied within the same iteration. This method is known as the 
+	Gauss-Seidel's method.
 
 	Args:
 	    A (ndarray) : 2D array containing the coefficients of each 
@@ -128,12 +128,20 @@ def gauss_seidel_method(A, b, initial_guess, max_iter=100, decimals=6):
 	n = len(b)
 	x = initial_guess
 	xnew = np.empty(n, float)
+	xdiff = np.empty(n, float)
 	threshold = 10**(-decimals)
 	for iteration in range(max_iter):
 		for i in range(n):
 			xnew[i] = -(sum([A[i, j]*x[j] for j in range(n) if j != i]) - b[i])/A[i, i]
-			xdiff = abs(xnew[i] - x[i])
+			xdiff[i] = abs(xnew[i] - x[i])
 			x[i] = xnew[i]
-		if xdiff < threshold:
+		if all(xdiff < threshold):
 			break
 	return iteration, np.around(xnew, decimals-1)
+
+def gauss_jordan_method():
+	pass
+
+# some linear system solution functions in numpy and scipy packages
+
+
