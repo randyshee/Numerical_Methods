@@ -2,7 +2,7 @@ import numpy as np
 
 def euler_method(dy, domain, y, h=0.5):
 	"""
-	Find the numerical solution of 1st order differential equation `dy` 
+	Find the numerical solution of first order differential equation `dy` 
 	over the `domain` with given stepsize `h` and initial value `y` using
 	the Euler's method (using 1st derivative of Taylor series).
 
@@ -33,7 +33,7 @@ def euler_method(dy, domain, y, h=0.5):
 
 def second_runge_kutta(dy, domain, y, h=0.5):
 	"""
-	Find the numerical solution of 1st order differential equation `dy` 
+	Find the numerical solution of first order differential equation `dy` 
 	over the `domain` with given stepsize `h` and initial value `y` using
 	the second-order Runge-Kutta's method (including 2nd derivative of 
 	Taylor series).
@@ -70,7 +70,7 @@ def second_runge_kutta(dy, domain, y, h=0.5):
 
 def forth_runge_kutta(dy, domain, y, h=0.5):
 	"""
-	Find the numerical solution of 1st order differential equation `dy` 
+	Find the numerical solution of first order differential equation `dy` 
 	over the `domain` with given stepsize `h` and initial value `y` using
 	the forth-order Runge-Kutta's method (including 4th derivative of 
 	Taylor series).
@@ -107,3 +107,7 @@ def forth_runge_kutta(dy, domain, y, h=0.5):
 		data_points.append((x, y))
 	return data_points
 
+# some ODE solution functions in scipy package 
+#from scipy.integrate import odeint
+
+#y = odeint(dy, y0, domain_x)
