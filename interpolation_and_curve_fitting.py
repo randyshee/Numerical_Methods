@@ -177,7 +177,7 @@ def polynomial_fit(xlist, ylist, degree=2):
 	return coef
 
 # some interpolation functions in scipy package 
-#from scipy.interpolate import interp1d, lagrange
+# from scipy.interpolate import interp1d, lagrange
 
 #f = interp1d(x, y) #creates the linear interpolation function
 #f = interp1d(x, y, 'quadratic') #creates the quadratic interpolation function
